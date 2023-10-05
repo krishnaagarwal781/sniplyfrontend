@@ -38,7 +38,7 @@ function Form() {
   useEffect(() => {
     if (shortenedLink) {
       const iframe = iframeRef.current;
-      iframe.src = `http://localhost:8000/${shortenedLink}`;
+      iframe.src = `https://sniplybackend.onrender.com/${shortenedLink}`;
 
       window.addEventListener("message", (event) => {
         if (event.origin === iframe.src) {
@@ -83,7 +83,7 @@ function Form() {
         <div>
           Farzi Link Taiyaar hai:{" "}
           <a
-            href={`http://localhost:8000/${shortenedLink}`}
+            href={`https://sniplybackend.onrender.com/${shortenedLink}`}
             target="_blank"
             rel="noopener noreferrer"
           >
