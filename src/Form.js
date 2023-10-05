@@ -19,7 +19,7 @@ function Form() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/generate-link/",
+        "https://sniplybackend.onrender.com/generate-link/",
         {
           url: link,
           cta_message: ctaMessage,
