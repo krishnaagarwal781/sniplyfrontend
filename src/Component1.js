@@ -1,8 +1,8 @@
 import React from 'react'
-
+import "./Form.css"
 function Component1() {
   return (
-    <div>Component1</div>
+    <img src='https://i.postimg.cc/NfSLs6fz/component-1.png' alt='image1'/>
   )
 }
 

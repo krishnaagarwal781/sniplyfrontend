@@ -31,7 +31,7 @@
 
 /* Input field */
 .input {
-  width: 95%;
+  width: 96%;
   padding: 15px;
   font-size: 18px;
   border: 2px solid #ccc;
@@ -46,7 +46,7 @@
 
 /* Select dropdown */
 .select {
-  width: 95%;
+  width: 96%;
   padding: 15px;
   font-size: 18px;
   border: 2px solid #ccc;
@@ -54,7 +54,10 @@
   margin-bottom: 20px;
   outline: none;
 }
-
+img{
+    width: 400px;
+    /* height: 100px; */
+}
 /* Generate button */
 .generate-button {
   background-color: #c300ff;

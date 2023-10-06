@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "./Form";
+import Component1 from "./Component1";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Form updateShortLink={updateShortLink} />
+      <Component1/>
     </div>
   );
 }

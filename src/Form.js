@@ -8,6 +8,7 @@ function Form() {
   const [ctaMessage, setCtaMessage] = useState("");
   const [shortenedLink, setShortenedLink] = useState("");
   const [selectedComponent, setSelectedComponent] = useState("Component1");
+  const [selectedAlignment, setSelectedAlignment] = useState("bottom left");
   const iframeRef = useRef(null);
 
   const componentOptions = [
@@ -15,6 +16,16 @@ function Form() {
     "Component2",
     "Component3",
     "Component4",
+    "Component5",
+    "Component6",
+  ];
+  const alignment = [
+    "bottom left",
+    "bottom right",
+    "bottom center",
+    // "Component4",
+    // "Component5",
+    // "Component6",
   ];
 
   const handleSubmit = async (e) => {
@@ -22,11 +33,12 @@ function Form() {
 
     try {
       const response = await axios.post(
-        "https://sniplybackend.onrender.com/generate-link/",
+        "http://127.0.0.1:8000/generate-link/",
         {
           url: link,
           cta_message: ctaMessage,
           selected_component: selectedComponent,
+          selected_alignment: selectedAlignment,
         }
       );
 
@@ -41,7 +53,7 @@ function Form() {
   useEffect(() => {
     if (shortenedLink) {
       const iframe = iframeRef.current;
-      iframe.src = `https://sniplybackend.onrender.com/${shortenedLink}`;
+      iframe.src = `http://127.0.0.1:8000/${shortenedLink}`;
 
       window.addEventListener("message", (event) => {
         if (event.origin === iframe.src) {
@@ -80,6 +92,20 @@ function Form() {
             ))}
           </select>
         </label>
+        <label>
+          Select Alignment:
+          <select
+            className="select"
+            value={selectedAlignment}
+            onChange={(e) => setSelectedAlignment(e.target.value)}
+          >
+            {alignment.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
 
         <button className="generate-button" type="submit">
           Generate Link
@@ -90,7 +116,7 @@ function Form() {
         <div className="link-container">
           Website is generated:{" "}
           <a
-            href={`https://sniplybackend.onrender.com/${shortenedLink}`}
+            href={`http://127.0.0.1:8000/${shortenedLink}`}
             target="_blank"
             rel="noopener noreferrer"
             className="link"
