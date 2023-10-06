@@ -5,6 +5,7 @@ import "./Form.css";
 
 function Form() {
   const [link, setLink] = useState("");
+  // eslint-disable no-unused-vars
   const [ctaMessage, setCtaMessage] = useState("");
   const [shortenedLink, setShortenedLink] = useState("");
   const [selectedComponent, setSelectedComponent] = useState("Component1");
