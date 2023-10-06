@@ -70,6 +70,7 @@ img{
   transition: background-color 0.3s ease;
 }
 
+
 .generate-button:hover {
   background-color: #b009f3;
 }
@@ -102,4 +103,10 @@ img{
   border-radius: 10px;
   border: none; /* Remove border */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.yo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

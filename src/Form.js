@@ -67,7 +67,22 @@ function Form() {
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
-        <h1 className="header">Convert Your Customized Website</h1>
+        <div classname="yo">
+          <h1 className="header">Generate short link </h1>
+          {shortenedLink && (
+            <div className="">
+              Website is generated:{" "}
+              <a
+                href={`https://sniplybackend.onrender.com/${shortenedLink}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                Click
+              </a>
+            </div>
+          )}
+        </div>
         <label>
           Enter Link:
           <input
@@ -111,20 +126,6 @@ function Form() {
           Generate Link
         </button>
       </form>
-
-      {shortenedLink && (
-        <div className="link-container">
-          Website is generated:{" "}
-          <a
-            href={`https://sniplybackend.onrender.com/${shortenedLink}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link"
-          >
-            Click
-          </a>
-        </div>
-      )}
 
       <iframe
         ref={iframeRef}
