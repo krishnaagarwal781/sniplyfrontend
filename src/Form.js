@@ -1,18 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-// import Component1 from "./Component1";
-// import Component2 from "./Component2";
-// import Component3 from "./Component3";
-// import Component4 from "./Component4";
+import "./Form.css";
 
 function Form() {
   const [link, setLink] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const [ctaMessage, setCtaMessage] = useState("");
   const [shortenedLink, setShortenedLink] = useState("");
-  const [selectedComponent, setSelectedComponent] = useState("Component1"); // Default selection
+  const [selectedComponent, setSelectedComponent] = useState("Component1");
   const iframeRef = useRef(null);
+
+  const componentOptions = [
+    "Component1",
+    "Component2",
+    "Component3",
+    "Component4",
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ function Form() {
         {
           url: link,
           cta_message: ctaMessage,
-          selected_component: selectedComponent, // Send selected component to the backend
+          selected_component: selectedComponent,
         }
       );
 
@@ -50,13 +53,13 @@ function Form() {
   }, [shortenedLink, ctaMessage]);
 
   return (
-    <div style={{ display: "flex", alignItems: "center", flexDirection: "column", backgroundColor: "navajowhite", height: "100vh" }}>
-      <h1>Farzi Website bana lo</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="form" onSubmit={handleSubmit}>
+        <h1 className="header">Convert Your Customized Website</h1>
         <label>
           Enter Link:
           <input
-            style={{ marginLeft: "4px", width: "400px", marginRight: "4px" }}
+            className="input"
             type="text"
             value={link}
             onChange={(e) => setLink(e.target.value)}
@@ -66,36 +69,42 @@ function Form() {
         <label>
           Select Component:
           <select
+            className="select"
             value={selectedComponent}
             onChange={(e) => setSelectedComponent(e.target.value)}
           >
-            <option value="Component1">Component 1</option>
-            <option value="Component2">Component 2</option>
-            <option value="Component3">Component 3</option>
-            <option value="Component4">Component 4</option>
+            {componentOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </label>
 
-        <button type="submit">Generate Farzi Link</button>
+        <button className="generate-button" type="submit">
+          Generate Link
+        </button>
       </form>
 
       {shortenedLink && (
-        <div>
-          Farzi Link Taiyaar hai:{" "}
+        <div className="link-container">
+          Website is generated:{" "}
           <a
             href={`https://sniplybackend.onrender.com/${shortenedLink}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="link"
           >
             Click
-          </a>{" "}
+          </a>
         </div>
       )}
 
       <iframe
         ref={iframeRef}
         title="Generated Website"
-        width="1000px"
+        className="iframe"
+        width="600px"
         height="600px"
       ></iframe>
     </div>

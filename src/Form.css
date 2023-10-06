@@ -1,0 +1,102 @@
+/* Form.css */
+
+/* Main container */
+.form-container {
+  display: flex;
+  align-items: center;
+  background-color: #fa60f51f;
+  height: 100vh;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Header */
+/* Creative header text styling */
+.header {
+  font-size: 36px;
+  color: #c300ff; /* Match the generate button color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a text shadow */
+}
+
+/* Form container */
+.form {
+    padding-top: 100px;
+}
+.form label {
+  margin-bottom: 15px;
+}
+
+/* Input field */
+.input {
+  width: 95%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+/* Select dropdown */
+.select {
+  width: 95%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+/* Generate button */
+.generate-button {
+  background-color: #c300ff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.generate-button:hover {
+  background-color: #b009f3;
+}
+
+/* Generated link */
+.link-container {
+  /* margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+    text-align: center; */
+  position: absolute;
+  bottom: 50%;
+  left: 3%;
+}
+
+.link {
+  color: #b009f3;
+  text-decoration: none;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* Iframe */
+.iframe {
+  width: 100%;
+  max-width: 1000px;
+  height: 800px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: none; /* Remove border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
