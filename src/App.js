@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "./Form";
-import Component1 from "./Component1";
+import {Component1} from "./Components";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
