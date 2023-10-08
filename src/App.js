@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Form updateShortLink={updateShortLink} />
-      <Component1/>
+      {/* <Component1/> */}
     </div>
   );
 }
