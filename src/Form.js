@@ -15,7 +15,7 @@ function Form() {
   // eslint-disable-next-line
   const [ctaMessage, setCtaMessage] = useState("");
   const [shortenedLink, setShortenedLink] = useState("");
-  const [selectedComponent, setSelectedComponent] = useState("Component1");
+  const [selectedComponent, setSelectedComponent] = useState("");
   const [selectedAlignment, setSelectedAlignment] = useState("bottom left");
   const iframeRef = useRef(null);
   const [hoveredComponent, setHoveredComponent] = useState(null);
