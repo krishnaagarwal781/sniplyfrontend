@@ -5,7 +5,7 @@ import "./Form.css";
 
 function Form() {
   const [link, setLink] = useState("");
- // eslint-disable-next-line
+  // eslint-disable-next-line
   const [ctaMessage, setCtaMessage] = useState("");
   const [shortenedLink, setShortenedLink] = useState("");
   const [selectedComponent, setSelectedComponent] = useState("Component1");
@@ -34,7 +34,7 @@ function Form() {
 
     try {
       const response = await axios.post(
-        "https://sniplybackend.onrender.com/generate-link/",
+        "http://127.0.0.1:8000/generate-link/",
         {
           url: link,
           cta_message: ctaMessage,
@@ -54,7 +54,17 @@ function Form() {
   useEffect(() => {
     if (shortenedLink) {
       const iframe = iframeRef.current;
-      iframe.src = `https://sniplybackend.onrender.com/${shortenedLink}`;
+
+      // Extract the domain from the entered link and convert it to a valid path segment
+      const domainPath = link
+        .replace(/https?:\/\//, "")
+        .replace(/\/$/, "")
+        .replace(/\//g, "_");
+
+      iframe.src = `http://127.0.0.1:8000/${encodeURIComponent(
+        domainPath
+      )}/${shortenedLink}`;
+      console.log(iframe.src);
 
       window.addEventListener("message", (event) => {
         if (event.origin === iframe.src) {
@@ -74,7 +84,12 @@ function Form() {
             <div className="">
               Website is generated:{" "}
               <a
-                href={`https://sniplybackend.onrender.com/${shortenedLink}`}
+                href={`http://127.0.0.1:8000/${encodeURIComponent(
+                  link
+                    .trim()
+                    .replace(/(^\w+:|^)\/\//, "")
+                    .replace(/\//g, "_")
+                )}/${shortenedLink}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link"
