@@ -29,12 +29,19 @@ function Form() {
   ];
   const alignment = ["bottom left", "bottom right", "bottom center"];
 
+    /*****************Production******************/
+    // eslint-disable-next-line
+    const apiProduction="https://sniplybackend.onrender.com"
+
+    /*****************Development******************/
+    const apiDev="http://127.0.0.1:8000"
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/generate-link/",
+        `${apiDev}/generate-link/`,
         {
           url: link,
           cta_message: ctaMessage,
@@ -60,14 +67,14 @@ function Form() {
         .replace(/\/$/, "")
         .replace(/\//g, "_");
 
-      const iframeSrc = `http://127.0.0.1:8000/${encodeURIComponent(
+      const iframeSrc = `${apiDev}/${encodeURIComponent(
         domainPath
       )}/${shortenedLink}`;
 
       iframe.src = iframeSrc;
 
       iframe.onload = (event) => {
-        fetch(`http://127.0.0.1:8000/track-visit/${shortenedLink}`, {
+        fetch(`${apiDev}/track-visit/${shortenedLink}`, {
           method: "GET",
           mode: "no-cors",
         });
@@ -97,7 +104,7 @@ function Form() {
             <div>
               Website is generated:{" "}
               <a
-                href={`http://127.0.0.1:8000/${encodeURIComponent(
+                href={`${apiDev}/${encodeURIComponent(
                   link
                     .trim()
                     .replace(/(^\w+:|^)\/\//, "")
