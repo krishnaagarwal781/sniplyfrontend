@@ -20,12 +20,12 @@ function Form() {
   const iframeRef = useRef(null);
   const [hoveredComponent, setHoveredComponent] = useState(null);
   const componentOptions = [
-    { label: "Component 1", component: <Component1 /> },
-    { label: "Component 2", component: <Component2 /> },
-    { label: "Component 3", component: <Component3 /> },
-    { label: "Component 4", component: <Component4 /> },
-    { label: "Component 5", component: <Component5 /> },
-    { label: "Component 6", component: <Component6 /> },
+    { label: "Component1", component: <Component1 /> },
+    { label: "Component2", component: <Component2 /> },
+    { label: "Component3", component: <Component3 /> },
+    { label: "Component4", component: <Component4 /> },
+    { label: "Component5", component: <Component5 /> },
+    { label: "Component6", component: <Component6 /> },
   ];
   const alignment = ["bottom left", "bottom right", "bottom center"];
 
@@ -78,7 +78,7 @@ function Form() {
         }
       };
     }
-  }, [shortenedLink, ctaMessage]);
+  }, [shortenedLink, ctaMessage,link]);
 
   return (
     <div className="form-container">
