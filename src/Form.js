@@ -29,27 +29,24 @@ function Form() {
   ];
   const alignment = ["bottom left", "bottom right", "bottom center"];
 
-    /*****************Production******************/
-    // eslint-disable-next-line
-    const apiProduction="https://sniplybackend.onrender.com"
+  /*****************Production******************/
+  // eslint-disable-next-line
+  const apiProduction = "https://sniplybackend.onrender.com";
 
-    /*****************Development******************/
-    // eslint-disable-next-line
-    const apiDev="http://127.0.0.1:8000"
+  /*****************Development******************/
+  // eslint-disable-next-line
+  const apiDev = "http://127.0.0.1:8000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `${apiProduction}/generate-link/`,
-        {
-          url: link,
-          cta_message: ctaMessage,
-          selected_component: selectedComponent,
-          selected_alignment: selectedAlignment,
-        }
-      );
+      const response = await axios.post(`${apiProduction}/generate-link/`, {
+        url: link,
+        cta_message: ctaMessage,
+        selected_component: selectedComponent,
+        selected_alignment: selectedAlignment,
+      });
 
       if (response.data && response.data.short_code) {
         setShortenedLink(response.data.short_code);
@@ -58,7 +55,15 @@ function Form() {
       console.error("Error creating shortened link:", error);
     }
   };
-
+  const trackLinkClick = async () => {
+    try {
+      // Send a request to track the click
+      await axios.get(`${apiProduction}/track-visit/${shortenedLink}`);
+      console.log("Link click tracked successfully.");
+    } catch (error) {
+      console.error("Error tracking link click:", error);
+    }
+  };
   useEffect(() => {
     if (shortenedLink) {
       const iframe = iframeRef.current;
@@ -86,7 +91,7 @@ function Form() {
         }
       };
     }
-  }, [shortenedLink, ctaMessage,link]);
+  }, [shortenedLink, ctaMessage, link]);
 
   return (
     <div className="form-container">
@@ -119,6 +124,7 @@ function Form() {
                   marginLeft: "5px",
                   fontWeight: "bold",
                 }}
+                onClick={trackLinkClick} // Call the trackLinkClick function when the link is clicked
               >
                 Click
               </a>
